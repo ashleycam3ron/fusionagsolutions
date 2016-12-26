@@ -26,25 +26,36 @@
 	<h3 class="hidden"><?php bloginfo('name')?> – <?php bloginfo('description');?></h3>
 
 <header id="header" role="banner">
-	<a class="navbar-brand" href="<?php echo esc_url( home_url() ) ?>">
-		<img class="img-responsive" src="<?php echo get_stylesheet_directory_uri() ?>/images/x-logo.png" alt="x logo">
-	</a>
-	<nav class="navbar navbar-default" role="navigation">
-		<h2>Primary Navigation</h2>
-		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar top-bar"></span>
-            <span class="icon-bar middle-bar"></span>
-            <span class="icon-bar bottom-bar"></span>
-        </button>
-		<div id="navbar" class="navbar-collapse collapse navbar-ex1-collapse">
-		<?php wp_nav_menu( array(
-			  'menu' => 'primary',
-			  'depth' => 2,
-			  'container' => false,
-			  'menu_class' => 'nav navbar-nav sticky',
-			  'walker' => new wp_bootstrap_navwalker())
-			); ?>
+	<nav id="social"><?php wp_nav_menu( array('menu' => 'social', 'menu_class'=> 'container text-right')); ?></nav>
+	<div class="container">
+		<a class="navbar-brand" href="<?php echo esc_url( home_url() ) ?>">
+			<img class="img-responsive" src="<?php echo get_stylesheet_directory_uri() ?>/images/Fusion-Ag-Solutions-Logo.png" alt="Fusion Ag Solutions logo">
+		</a>
+		<div id="weather" class="xs-hidden">
+			<?php date_default_timezone_set('America/Chicago');
+		      $today = date("l, F d g:ia T"); ?>
+		    <p><?php echo $today; ?></p>
+		     <?php echo do_shortcode("[wunderground location='zmw:66534.1.99999' layout='simple' numdays='1' showdata='highlow' hidedata='search,icon']"); ?>
 		</div>
-	</nav>
+	    <a class="phone pull-right" href="tel:7857414899">785.741.4899</a>
+		<nav class="navbar navbar-default" role="navigation">
+			<h2>Primary Navigation</h2>
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+	            <span class="sr-only">Toggle navigation</span>
+	            <span class="icon-bar top-bar"></span>
+	            <span class="icon-bar middle-bar"></span>
+	            <span class="icon-bar bottom-bar"></span>
+	        </button>
+			<div id="navbar" class="navbar-collapse collapse navbar-ex1-collapse">
+			<?php wp_nav_menu( array(
+				  'menu' => 'primary',
+				  'depth' => 2,
+				  'container' => false,
+				  'menu_class' => 'nav navbar-nav sticky',
+				  'walker' => new wp_bootstrap_navwalker())
+				); ?>
+			</div>
+		</nav>
+		<div class="clear"></div>
+	</div>
 </header>
